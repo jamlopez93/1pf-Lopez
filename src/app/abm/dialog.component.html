@@ -1,0 +1,186 @@
+<h2 mat-dialog-title>Agregar Estudiante</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form" (submit)="handleSubmit()">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Nombre </mat-label>
+      <input matInput formControlName="nombre" required />
+      <mat-error
+        *ngIf="
+          form.controls['nombre'].touched && form.controls['nombre'].invalid
+        "
+      >
+        <span
+          *ngIf="
+            form.controls['nombre'].errors &&
+            form.controls['nombre'].errors['required']
+          "
+          >Obligatorio</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Apellido </mat-label>
+      <input matInput formControlName="apellido" required />
+      <mat-error
+        *ngIf="
+          form.controls['apellido'].touched && form.controls['apellido'].invalid
+        "
+      >
+        <span
+          *ngIf="
+            form.controls['apellido'].errors &&
+            form.controls['apellido'].errors['required']
+          "
+          >Obligatorio</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Email </mat-label>
+      <input matInput formControlName="email" required />
+      <mat-error
+        *ngIf="form.controls['email'].touched && form.controls['email'].invalid"
+      >
+        <span
+          *ngIf="
+            form.controls['email'].errors &&
+            form.controls['email'].errors['required']
+          "
+          >Obligatorio</span
+        >
+        <span
+          *ngIf="
+            form.controls['email'].errors &&
+            form.controls['email'].errors['email']
+          "
+          >Debes usar un correo valido</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Genero </mat-label>
+      <mat-select formControlName="genero">
+        <mat-option value="M"> Masculino </mat-option>
+        <mat-option value="F"> Femenino </mat-option>
+        <mat-option value="Otro"> Otro </mat-option>
+      </mat-select>
+
+      <mat-error
+        *ngIf="
+          form.controls['genero'].touched && form.controls['genero'].invalid
+        "
+      >
+        <span
+          *ngIf="
+            form.controls['genero'].errors &&
+            form.controls['genero'].errors['required']
+          "
+          >Obligatorio</span
+        >
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Telefono </mat-label>
+      <input matInput formControlName="telefono" required />
+      <mat-error
+        *ngIf="
+          form.controls['telefono'].touched && form.controls['telefono'].invalid
+        "
+      >
+        <span
+          *ngIf="
+            form.controls['telefono'].errors &&
+            form.controls['telefono'].errors['required']
+          "
+          >Obligatorio</span
+        >
+        <span
+          *ngIf="
+            form.controls['telefono'].errors &&
+            form.controls['telefono'].errors['pattern']
+          "
+          >Debes usar un numero telefonico valido</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Matematica </mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="matematica"
+        required
+        min="0"
+        max="5"
+      />
+      <mat-error
+        *ngIf="
+          form.controls['matematica'].touched &&
+          form.controls['matematica'].invalid
+        "
+      >
+        <span
+          *ngIf="
+            form.controls['matematica'].errors &&
+            form.controls['matematica'].errors['required']
+          "
+          >Obligatorio</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Ciencia </mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="ciencia"
+        required
+        min="0"
+        max="5"
+      />
+      <mat-error
+        *ngIf="
+          form.controls['ciencia'].touched && form.controls['ciencia'].invalid
+        "
+      >
+        <span
+          *ngIf="
+            form.controls['ciencia'].errors &&
+            form.controls['ciencia'].errors['required']
+          "
+          >Obligatorio</span
+        >
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Biologia </mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="biologia"
+        required
+        min="0"
+        max="5"
+      />
+      <mat-error
+        *ngIf="
+          form.controls['biologia'].touched && form.controls['biologia'].invalid
+        "
+      >
+        <span
+          *ngIf="
+            form.controls['biologia'].errors &&
+            form.controls['biologia'].errors['required']
+          "
+          >Obligatorio</span
+        >
+      </mat-error> </mat-form-field
+    ><mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <button mat-button cdkFocusInitial type="button" (click)="handleSubmit()">
+        Guardar
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>
