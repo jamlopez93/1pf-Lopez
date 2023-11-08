@@ -21,6 +21,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { NombresPipe } from './nombres.pipe';
 import { TituloDirective } from './titulo.directive';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from '../environments/environment';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,7 @@ import { TituloDirective } from './titulo.directive';
     FormDialog,
     NombresPipe,
     TituloDirective,
+    LoginButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +53,10 @@ import { TituloDirective } from './titulo.directive';
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
+    AuthModule.forRoot({
+      ...environment.auth,
+    }),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
