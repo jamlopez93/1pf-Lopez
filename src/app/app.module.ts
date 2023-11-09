@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { ListComponent } from './list/list.component';
 import { AbmComponent, FormDialog } from './abm/abm.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,22 +20,23 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { NombresPipe } from './nombres.pipe';
 import { TituloDirective } from './titulo.directive';
-import { AuthModule } from '@auth0/auth0-angular';
-import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { loginComponent } from './login/login.component';
+
+import { AuthModule } from '@auth0/auth0-angular';
+import { LoginButtonComponent } from './login-button/login-button.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    ListComponent,
     AbmComponent,
     NavbarComponent,
     FormDialog,
-    NombresPipe,
     TituloDirective,
     LoginButtonComponent,
+    loginComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,10 +53,14 @@ import { LoginButtonComponent } from './components/login-button/login-button.com
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
-    AuthModule.forRoot({
-      ...environment.auth,
-    }),
     NgbModule,
+    AuthModule.forRoot({
+      domain: 'dev-wklj53hh7gos0wue.us.auth0.com',
+      clientId: 'OCpk8UkE4Q5HGEpdHH57NFmEmXQcUi7Y',
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

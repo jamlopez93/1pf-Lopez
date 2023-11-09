@@ -6,7 +6,5 @@ export const environment = {
     domain,
     clientId,
     redirectUri: window.location.origin,
-  }
+  },
 };
-
-
