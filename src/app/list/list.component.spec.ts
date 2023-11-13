@@ -20,4 +20,12 @@ describe('ListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Debe mostrar la data en la tabla', () => {
+    fixture.detectChanges();
+    const tableRows = fixture.nativeElement.querySelectorAll('tr');
+    expect(tableRows.length).toEqual(component.dataService.estudiantes.length + 1);
+  });
+
+
 });
